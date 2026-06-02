@@ -139,7 +139,7 @@ Usuario → Orquestador → Kafka → Agentes → Consumers
 - Dependencia de LLMs
 - Coste computacional
 - Complejidad de sistemas async
-- Consistencia eventual
+- Sistemas fuertemente acoplados (PL/SQL)
 
 ---
 
