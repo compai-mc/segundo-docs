@@ -200,8 +200,3 @@ El proyecto se considerará exitoso si:
 - Se dispone de un flujo multi‑agente funcionando end‑to‑end  
 
 ---
-
-## 12. Aprobación
-
-- **Responsable del proyecto:** ___________________  
-- **Fecha:** ___________________  
