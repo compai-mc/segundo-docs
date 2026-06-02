@@ -118,10 +118,10 @@ El sistema se compondrá de los siguientes microservicios:
   - Documentación
   - Detección de problemas
 
-- **Optimization Service**
+- **Optimizador**
   - Generación de mejoras y rediseños
 
-- **Memory Service**
+- **Sistema de memoria**
   - Almacenamiento vectorial
   - Indexación y búsqueda semántica
   - Gestión de metadatos del repositorio
@@ -163,8 +163,4 @@ El proyecto asume que:
 
 ---
 
-## 9. Control de Cambios
 
-Cualquier modificación del alcance deberá ser evaluada y aprobada formalmente, pudiendo implicar cambios en la arquitectura, costes o complejidad del sistema.
-
----

@@ -16,11 +16,11 @@ Construir en 3 meses un sistema que:
 
 El plan integra ambos sistemas y se divide en 3 fases:
 
-| Fase | Semanas | Objetivo |
-|------|--------|---------|
-| Fase 1 | 1–4 | Base técnica + Kafka + análisis inicial |
-| Fase 2 | 5–8 | Multi‑agente + sistema event-driven completo |
-| Fase 3 | 9–12 | Integración total + casos reales |
+| Fase   | Semanas | Objetivo                                     |
+|--------|---------|----------------------------------------------|
+| Fase 1 | 1–4     | Base técnica + Kafka + análisis inicial      |
+| Fase 2 | 5–8     | Multi‑agente + sistema event-driven completo |
+| Fase 3 | 9–12    | Integración total + casos reales             |
 
 ---
 
@@ -135,28 +135,6 @@ Usuario → Orquestador → Kafka → Agentes → Consumers
 
 ---
 
-# 🧠 Arquitectura Final
-
-```
-Usuario / Legacy System
-         │
-         ▼
-     Wrapper / Gateway
-         │
-         ▼
-        Kafka
-         │
- ┌───────┼────────┬────────┐
- ▼       ▼        ▼        ▼
-Analista Arquitecto Verificador Consumers
-   │         │        │        │
-   └──────┬──┴──┬─────┘        │
-          ▼     ▼              ▼
-     Memory   Optimization   BD / Servicios
-```
-
----
-
 # ⚠️ Riesgos
 - Dependencia de LLMs
 - Coste computacional
@@ -175,9 +153,4 @@ En 3 meses:
 - ✅ Arquitectura escalable basada en eventos
 
 ---
-
-# 📌 Siguientes pasos
-- Definir backlog detallado
-- Asignar equipo
-- Iniciar Fase 1
 

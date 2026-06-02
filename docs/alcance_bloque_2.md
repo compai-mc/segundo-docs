@@ -9,7 +9,9 @@ El presente documento define el alcance del segundo bloque del proyecto, centrad
 ---
 
 ## 2. Descripción del Proyecto
-El proyecto consiste en la construcción de una capa de desacople que permita redirigir las llamadas directas entre componentes hacia un modelo basado en mensajería asíncrona.
+El proyecto consiste en la definición de la **arquitectura** para la una capa de desacople que permita redirigir las llamadas directas entre componentes hacia un modelo basado en mensajería asíncrona.
+
+El proyecto se ilustrará con un piloto real (MVP). En el MVP NO cambiará el mapeo actual de las funciones (harán lo mismo que actualmente pero de manera desacoplada)
 
 El objetivo es eliminar dependencias punto a punto en el código y en el acceso a bases de datos, introduciendo un bus de eventos como mecanismo único de comunicación entre componentes.
 
@@ -53,17 +55,21 @@ El sistema incluirá:
 #### Modelo objetivo (TO-BE)
 - Comunicación mediante eventos  
 - Desacoplo entre emisores y consumidores  
-- Procesamiento asíncrono  
+- Procesamiento asíncrono  (pero respuesta síncrona)
 
 ---
 
 ### 4.3 Tipos de eventos
 
-El sistema gestionará:
+El MVP gestionará:
 
 - Eventos de comando (acciones solicitadas)
-- Eventos de estado (cambios producidos)
-- Eventos derivados (procesos posteriores)
+
+El MVP no proporcionará:
+
+- Eventos de estado (mensajes de auditoria y control)
+- Eventos derivados (eventos a otros sistemas)
+
 
 #### Ejemplo de evento
 
@@ -98,7 +104,7 @@ El sistema gestionará:
 - Acceden a bases de datos  
 
 #### ✅ Servicios desacoplados
-- Implementan lógica por dominio  
+- Se implementa un tópico por cada servicio origen 
 - Independientes entre sí  
 
 ---
@@ -108,7 +114,7 @@ El sistema gestionará:
 El flujo general será:
 
 ```
-Sistema Legacy → Wrapper → Kafka → Consumers → Sistemas destino
+Sistema Original → Wrapper → Kafka → Consumidores → Sistemas destino
 ```
 
 ---
@@ -137,19 +143,18 @@ Se asume que:
 
 ---
 
-## 8. Restricciones
+## 8. Riesgos
 
 - Compatibilidad con el sistema actual  
 - Introducción progresiva del modelo  
 - Complejidad de sistemas asíncronos  
-- Consistencia eventual  
 - Incremento de latencia frente a llamadas síncronas  
 
 ---
 
 ## 9. Consideraciones técnicas
 
-El sistema deberá contemplar:
+El sistema deberá contemplar (no en el MVP):
 
 - Idempotencia en consumidores  
 - Reintentos automáticos  
@@ -160,11 +165,4 @@ El sistema deberá contemplar:
 
 ---
 
-## 10. Control de Cambios
-
-Las modificaciones del alcance deberán evaluarse considerando:
-
-- Impacto en el sistema legacy  
-- Compatibilidad entre eventos  
-- Complejidad añadida  
 
