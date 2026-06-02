@@ -24,7 +24,7 @@ El plan integra ambos sistemas y se divide en 3 fases:
 
 ---
 
-# 🚧 FASE 1: Fundaciones (Semanas 1–4)
+# 🚧 FASE 1: Bases (Semanas 1–4)
 
 ## 🎯 Objetivo
 Levantar la base común de ambos sistemas (IA + Kafka)
