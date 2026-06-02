@@ -2,9 +2,9 @@
 # Documentación del proyecto
 
 
-## Este acceso
+## Acceso a la documentación
 
-https://github.com/compai-mc/segundo/tree/main/documentacion
+https://compai-mc.github.io/segundo-docs/
 
 
 ## 🔹 Documentos

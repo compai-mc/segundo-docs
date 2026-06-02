@@ -1,105 +1,207 @@
 # 📄 Plan de Proyecto
 
 ## 1. Información General
-- **Nombre del proyecto:** Implementación de Sistema X
-- **Responsable del proyecto:** Equipo IT
-- **Fecha de inicio:** 15/06/2026
-- **Fecha fin estimada:** 30/09/2026
-- **Documento de alcance asociado:** Documento de Alcance v1.0
+- **Nombre del proyecto:** Sistema de Análisis de Código Multi‑LLM
+- **Duración:** 3 meses
+- **Fecha inicio:** TBD
+- **Fecha fin estimada:** TBD + 3 meses
+- **Responsable:** Equipo de desarrollo
 
 ---
 
 ## 2. Objetivo del Plan
-Definir la organización, planificación y control necesarios para ejecutar el proyecto conforme al alcance previamente aprobado.
+Definir la planificación, organización y ejecución del proyecto para construir un sistema funcional basado en arquitectura multi‑agente y multi‑LLM para análisis de código.
 
 ---
 
-## 3. Entregables del Proyecto
-- Documento de requisitos validado
-- Diseño técnico
-- Sistema implementado
-- Informes de pruebas
-- Documentación de usuario
+## 3. Estrategia de Ejecución
+
+El proyecto se desarrollará de forma incremental, priorizando:
+
+1. Base funcional (ingestión + búsqueda)
+2. Primer agente operativo (Q&A / análisis)
+3. Introducción de multi‑LLM
+4. Orquestación multi‑agente
+5. Optimización y estabilización
+
+Se priorizará una **versión funcional (MVP)** antes que una arquitectura completamente completa.
 
 ---
 
 ## 4. Planificación
 
-### 4.1 Fases del Proyecto
+### 📅 Fase 1 — Fundaciones (Semana 1–3)
 
-| Fase        | Descripción                      | Inicio     | Fin        |
-|------------|----------------------------------|------------|------------|
-| Análisis   | Validación de requisitos         | 15/06/2026 | 30/06/2026 |
-| Diseño     | Definición técnica               | 01/07/2026 | 10/07/2026 |
-| Desarrollo | Implementación                   | 11/07/2026 | 31/08/2026 |
-| Pruebas    | Validación funcional             | 01/09/2026 | 15/09/2026 |
-| Despliegue | Puesta en producción             | 20/09/2026 | 30/09/2026 |
+**Objetivo:** Tener la base técnica operativa.
 
----
+**Tareas:**
+- Definición de estructura del proyecto  
+- Configuración de repositorio y entorno  
+- Implementación del Memory Service (Milvus):
+  - ingestión de código
+  - chunking
+  - embeddings
+  - API de búsqueda  
+- Prueba de indexación sobre un repositorio real  
 
-## 5. Organización y Recursos
-
-### 5.1 Equipo del Proyecto
-- Jefe de proyecto
-- Desarrolladores
-- QA / Testing
-
-### 5.2 Roles y responsabilidades
-
-| Rol                | Responsabilidades                          |
-|--------------------|------------------------------------------|
-| Jefe de proyecto   | Coordinación y seguimiento               |
-| Desarrollador      | Implementación técnica                   |
-| QA                 | Pruebas y validación                    |
+**Resultado esperado:**
+- Sistema capaz de indexar código y realizar búsquedas semánticas  
 
 ---
 
-## 6. Gestión de Riesgos
+### 📅 Fase 2 — Code Intelligence (Semana 4–6)
 
-| Riesgo                     | Probabilidad | Impacto | Mitigación                |
-|--------------------------|-------------|---------|---------------------------|
-| Retrasos en entregas      | Media       | Alto    | Seguimiento semanal       |
-| Problemas técnicos        | Media       | Alto    | Pruebas continuas         |
-| Falta de recursos         | Baja        | Medio   | Reasignación              |
+**Objetivo:** Primer agente funcional basado en LLM (Qwen)
 
----
+**Tareas:**
+- Implementación del Code Intelligence Service  
+- Integración con Milvus  
+- Desarrollo de capacidades:
+  - explicación de código  
+  - análisis de módulos  
+  - detección básica de problemas  
+- Implementación inicial de Q&A  
 
-## 7. Supuestos
-- El alcance no sufre cambios significativos
-- Recursos asignados disponibles
-- Infraestructura accesible
-
----
-
-## 8. Restricciones
-- Presupuesto limitado
-- Fecha de entrega comprometida
-- Dependencia de sistemas externos
+**Resultado esperado:**
+- Sistema que responde preguntas sobre código con contexto real  
 
 ---
 
-## 9. Control de Cambios
-Cualquier modificación del plan deberá ser evaluada y aprobada, considerando impacto en plazos y recursos.
+### 📅 Fase 3 — Multi‑LLM + Optimización (Semana 7–9)
+
+**Objetivo:** Introducir especialización de modelos
+
+**Tareas:**
+- Integración de segundo LLM (Gemma)  
+- Implementación del Optimization Service  
+- Separación clara de responsabilidades:
+  - Qwen → análisis  
+  - Gemma → optimización / arquitectura  
+- Desarrollo de prompts especializados  
+- Primer flujo multi‑modelo simple  
+
+**Resultado esperado:**
+- Sistema capaz de:
+  - analizar código  
+  - proponer mejoras  
 
 ---
 
-## 10. Seguimiento y Control
-- Reuniones periódicas de seguimiento
-- Actualización de estado del proyecto
-- Control de hitos y entregables
+### 📅 Fase 4 — Orquestación Multi‑Agente (Semana 10–11)
+
+**Objetivo:** Introducir inteligencia distribuida
+
+**Tareas:**
+- Implementación del Orquestador (Langroid)  
+- Definición de flujos:
+  - Q&A  
+  - documentación  
+  - optimización  
+- Integración de agentes:
+  - Analista  
+  - Arquitecto  
+  - Verificador  
+- Coordinación de respuestas  
+
+**Resultado esperado:**
+- Sistema multi‑agente funcional  
+- Primer pipeline distribuido completo  
 
 ---
 
-## 11. Comunicación
+### 📅 Fase 5 — Estabilización y Validación (Semana 12)
 
-| Tipo de comunicación | Frecuencia | Participantes        |
-|---------------------|------------|----------------------|
-| Reunión de seguimiento | Semanal | Equipo proyecto      |
-| Informe de estado     | Semanal   | Stakeholders         |
+**Objetivo:** Consolidar el sistema
+
+**Tareas:**
+- Testing funcional end‑to‑end  
+- Mejora de prompts  
+- Ajustes de rendimiento  
+- Resolución de errores  
+- Ejecución sobre repositorios reales  
+- Generación de ejemplos de uso  
+
+**Resultado esperado:**
+- MVP estable y demostrable  
+
+---
+
+## 5. Entregables
+
+Al finalizar el proyecto se entregará:
+
+- Sistema funcional de análisis de código  
+- Arquitectura multi‑agente operativa  
+- Integración multi‑LLM  
+- Documentación técnica básica  
+- Ejemplos de uso (Q&A, documentación, optimización)  
+
+---
+
+## 6. Recursos
+
+### Equipo
+- 1 desarrollador principal  
+- (opcional) apoyo puntual en infra o testing  
+
+### Tecnologías
+- LLMs: Qwen, Gemma  
+- Orquestación: Langroid  
+- Vector DB: Milvus  
+- Backend: Python  
+
+---
+
+## 7. Riesgos
+
+| Riesgo                          | Probabilidad | Impacto | Mitigación |
+|--------------------------------|-------------|---------|-----------|
+| Integración compleja de LLMs    | Media       | Alto    | desarrollo incremental |
+| Costes computacionales          | Media       | Medio   | uso de modelos ligeros |
+| Resultados inconsistentes       | Alta        | Alto    | agente verificador |
+| Complejidad de orquestación     | Media       | Alto    | simplificación inicial |
+
+---
+
+## 8. Supuestos
+
+- Acceso a modelos LLM  
+- Disponibilidad de infraestructura  
+- Acceso a repositorios de código de prueba  
+- Tiempo suficiente de desarrollo continuo  
+
+---
+
+## 9. Restricciones
+
+- Tiempo limitado (3 meses)  
+- Recursos limitados (equipo reducido)  
+- Dependencia de LLM externos  
+- Necesidad de priorizar MVP frente a solución completa  
+
+---
+
+## 10. Seguimiento
+
+- Revisión semanal de avances  
+- Validación por hito de cada fase  
+- Ajuste incremental de alcance si es necesario  
+
+---
+
+## 11. Criterios de Éxito
+
+El proyecto se considerará exitoso si:
+
+- El sistema responde preguntas sobre código correctamente  
+- Puede generar documentación técnica útil  
+- Puede proponer mejoras razonables  
+- Funciona con múltiples modelos de forma coordinada  
+- Se dispone de un flujo multi‑agente funcionando end‑to‑end  
 
 ---
 
 ## 12. Aprobación
-- **Responsable del proyecto:** ___________________
-- **Stakeholder / Cliente:** ___________________
-- **Fecha:** ___________________
+
+- **Responsable del proyecto:** ___________________  
+- **Fecha:** ___________________  
