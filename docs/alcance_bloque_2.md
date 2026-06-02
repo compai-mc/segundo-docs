@@ -1,15 +1,15 @@
 # 📄 Documento de Alcance del Proyecto  
-## Sistema de Desacoplo basado en Arquitectura Event-Driven
+## Sistema de Desacople basado en Arquitectura Event-Driven y CQRS
 
 ---
 
 ## 1. Propósito
-El presente documento define el alcance de la segunda fase del proyecto, centrada en la transformación de un sistema legacy altamente acoplado hacia una arquitectura desacoplada basada en eventos utilizando Apache Kafka.
+El presente documento define el alcance del segundo bloque del proyecto, centrada en la transformación de un sistema legacy altamente acoplado hacia una arquitectura desacoplada basada en eventos utilizando un event bus.
 
 ---
 
 ## 2. Descripción del Proyecto
-El proyecto consiste en la construcción de una capa de desacoplo (wrapper) que permita redirigir las llamadas directas entre componentes hacia un modelo basado en mensajería asíncrona.
+El proyecto consiste en la construcción de una capa de desacople que permita redirigir las llamadas directas entre componentes hacia un modelo basado en mensajería asíncrona.
 
 El objetivo es eliminar dependencias punto a punto en el código y en el acceso a bases de datos, introduciendo un bus de eventos como mecanismo único de comunicación entre componentes.
 
@@ -168,10 +168,3 @@ Las modificaciones del alcance deberán evaluarse considerando:
 - Compatibilidad entre eventos  
 - Complejidad añadida  
 
----
-
-## 11. Aceptación
-
-- **Responsable del proyecto:** ___________________  
-- **Stakeholder:** ___________________  
-- **Fecha:** ___________________  

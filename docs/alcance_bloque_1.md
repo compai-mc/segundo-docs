@@ -113,7 +113,7 @@ El sistema se compondrá de los siguientes microservicios:
   - Controla el flujo de ejecución
   - Coordina la interacción entre agentes
 
-- **Code Intelligence Service**
+- **Analizador**
   - Análisis de código
   - Documentación
   - Detección de problemas
@@ -130,7 +130,7 @@ El sistema se compondrá de los siguientes microservicios:
 
 ## 6. Límites del Proyecto (Fuera de alcance)
 
-Quedan explícitamente fuera del alcance:
+Quedan fuera del alcance:
 
 - Desarrollo de interfaces de usuario avanzadas
 - Integración con sistemas empresariales externos no definidos
@@ -146,9 +146,11 @@ Quedan explícitamente fuera del alcance:
 El proyecto asume que:
 
 - El código fuente estará disponible para su análisis
-- Los modelos de lenguaje utilizados serán accesibles
+- Los modelos de lenguaje utilizados serán accesibles. Estas dos parejas serían correctas:
+  - Claude 3, GPT-4o
+  - Llama 3 (Meta) + Gemini 1.5 Pro (Google)
 - Se dispone de infraestructura suficiente para ejecutar los servicios
-- Los resultados generados por LLMs serán revisables y contrastables
+  - linux
 
 ---
 

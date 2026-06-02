@@ -1,202 +1,280 @@
-# 📄 Plan de Proyecto
-
-## 1. Información General
-- **Nombre del proyecto:** Sistema de Análisis de Código Multi‑LLM
-- **Duración:** 3 meses
-- **Fecha inicio:** TBD
-- **Fecha fin estimada:** TBD + 3 meses
-- **Responsable:** Equipo de desarrollo
+# 🗺️ Plan de Proyecto (3 meses)
+## Sistema Multi‑Agente + Arquitectura Event‑Driven
 
 ---
 
-## 2. Objetivo del Plan
-Definir la planificación, organización y ejecución del proyecto para construir un sistema funcional basado en arquitectura multi‑agente y multi‑LLM para análisis de código.
+## 📌 1. Visión General
+
+Este proyecto integra dos grandes bloques:
+
+- ✅ Sistema de análisis de código basado en arquitectura multi‑agente y multi‑LLM  
+- ✅ Sistema de desacople basado en eventos con Apache Kafka (Event‑Driven + CQRS)
+
+El objetivo es construir un sistema escalable, desacoplado y capaz de analizar software complejo de forma automatizada.
 
 ---
 
-## 3. Estrategia de Ejecución
+## 🧭 2. Estrategia del Plan
 
-El proyecto se desarrollará de forma incremental, priorizando:
+El desarrollo se divide en **3 fases principales**:
 
-1. Base funcional (ingestión + búsqueda)
-2. Primer agente operativo (Q&A / análisis)
-3. Introducción de multi‑LLM
-4. Orquestación multi‑agente
-5. Optimización y estabilización
-
-Se priorizará una **versión funcional (MVP)** antes que una arquitectura completamente completa.
+| Fase | Duración | Objetivo |
+|------|--------|---------|
+| Fase 1 | Semanas 1–4 | Fundaciones técnicas |
+| Fase 2 | Semanas 5–8 | Desarrollo del core |
+| Fase 3 | Semanas 9–12 | Integración y estabilización |
 
 ---
 
-## 4. Planificación
+# 🚧 FASE 1: Fundaciones (Semanas 1–4)
 
-### 📅 Fase 1 — Fundaciones (Semana 1–3)
-
-**Objetivo:** Tener la base técnica operativa.
-
-**Tareas:**
-- Definición de estructura del proyecto  
-- Configuración de repositorio y entorno  
-- Implementación del Memory Service (Milvus):
-  - ingestión de código
-  - chunking
-  - embeddings
-  - API de búsqueda  
-- Prueba de indexación sobre un repositorio real  
-
-**Resultado esperado:**
-- Sistema capaz de indexar código y realizar búsquedas semánticas  
+## 🎯 Objetivo
+Establecer la infraestructura base y primeros componentes funcionales.
 
 ---
 
-### 📅 Fase 2 — Code Intelligence (Semana 4–6)
+## ✅ Semana 1 – Diseño de arquitectura
 
-**Objetivo:** Primer agente funcional basado en LLM (Qwen)
+### Entregables
+- Arquitectura técnica detallada
+- Diagramas de componentes
+- Catálogo inicial de eventos
 
-**Tareas:**
-- Implementación del Code Intelligence Service  
-- Integración con Milvus  
-- Desarrollo de capacidades:
-  - explicación de código  
-  - análisis de módulos  
-  - detección básica de problemas  
-- Implementación inicial de Q&A  
-
-**Resultado esperado:**
-- Sistema que responde preguntas sobre código con contexto real  
+### Tareas
+- Definir microservicios
+- Definir contratos de eventos
+- Selección tecnológica
 
 ---
 
-### 📅 Fase 3 — Multi‑LLM + Optimización (Semana 7–9)
+## ✅ Semana 2 – Infraestructura
 
-**Objetivo:** Introducir especialización de modelos
+### Entregables
+- Kafka desplegado
+- Repositorios iniciales
+- CI/CD básico
 
-**Tareas:**
-- Integración de segundo LLM (Gemma)  
-- Implementación del Optimization Service  
-- Separación clara de responsabilidades:
-  - Qwen → análisis  
-  - Gemma → optimización / arquitectura  
-- Desarrollo de prompts especializados  
-- Primer flujo multi‑modelo simple  
-
-**Resultado esperado:**
-- Sistema capaz de:
-  - analizar código  
-  - proponer mejoras  
+### Tareas
+- Deploy Kafka
+- Crear topics
+- Setup Docker
+- Configurar LLMs
 
 ---
 
-### 📅 Fase 4 — Orquestación Multi‑Agente (Semana 10–11)
+## ✅ Semana 3 – Ingesta y análisis v1
 
-**Objetivo:** Introducir inteligencia distribuida
+### Entregables
+- Analizador funcional
 
-**Tareas:**
-- Implementación del Orquestador (Langroid)  
-- Definición de flujos:
-  - Q&A  
-  - documentación  
-  - optimización  
-- Integración de agentes:
-  - Analista  
-  - Arquitecto  
-  - Verificador  
-- Coordinación de respuestas  
-
-**Resultado esperado:**
-- Sistema multi‑agente funcional  
-- Primer pipeline distribuido completo  
+### Tareas
+- Lectura de repos
+- Parser
+- Explicación de código
+- Indexación
 
 ---
 
-### 📅 Fase 5 — Estabilización y Validación (Semana 12)
+## ✅ Semana 4 – Kafka + flujo inicial
 
-**Objetivo:** Consolidar el sistema
+### Entregables
+- Flujo end-to-end
 
-**Tareas:**
-- Testing funcional end‑to‑end  
-- Mejora de prompts  
-- Ajustes de rendimiento  
-- Resolución de errores  
-- Ejecución sobre repositorios reales  
-- Generación de ejemplos de uso  
-
-**Resultado esperado:**
-- MVP estable y demostrable  
+### Tareas
+- Implementar wrapper
+- Crear consumer
+- Validar pipeline
 
 ---
 
-## 5. Entregables
+# ⚙️ FASE 2: Desarrollo Core (Semanas 5–8)
 
-Al finalizar el proyecto se entregará:
+## ✅ Semana 5 – Multi‑agente v1
+- Agente analista
+- Agente arquitecto
+- Orquestador
 
-- Sistema funcional de análisis de código  
-- Arquitectura multi‑agente operativa  
-- Integración multi‑LLM  
-- Documentación técnica básica  
-- Ejemplos de uso (Q&A, documentación, optimización)  
+## ✅ Semana 6 – Verificación
+- Agente verificador
+- Validación cruzada
 
----
+## ✅ Semana 7 – Kafka avanzado
+- Retries
+- DLQ
+- Idempotencia
 
-## 6. Recursos
-
-### Equipo
-- 1 desarrollador principal  
-- (opcional) apoyo puntual en infra o testing  
-
-### Tecnologías
-- LLMs: Qwen, Gemma  
-- Orquestación: Langroid  
-- Vector DB: Milvus  
-- Backend: Python  
+## ✅ Semana 8 – Optimización + Memoria
+- Optimization Service
+- Memory Service
+- Embeddings
 
 ---
 
-## 7. Riesgos
+# 🔗 FASE 3: Integración y Validación (Semanas 9–12)
 
-| Riesgo                          | Probabilidad | Impacto | Mitigación |
-|--------------------------------|-------------|---------|-----------|
-| Integración compleja de LLMs    | Media       | Alto    | desarrollo incremental |
-| Costes computacionales          | Media       | Medio   | uso de modelos ligeros |
-| Resultados inconsistentes       | Alta        | Alto    | agente verificador |
-| Complejidad de orquestación     | Media       | Alto    | simplificación inicial |
+## ✅ Semana 9 – Integración total
+- Integración completa
 
----
+## ✅ Semana 10 – Casos de uso
+- Análisis
+- Q&A
+- Documentación
 
-## 8. Supuestos
+## ✅ Semana 11 – Testing
+- Pruebas
+- Observabilidad
 
-- Acceso a modelos LLM  
-- Disponibilidad de infraestructura  
-- Acceso a repositorios de código de prueba  
-- Tiempo suficiente de desarrollo continuo  
-
----
-
-## 9. Restricciones
-
-- Tiempo limitado (3 meses)  
-- Recursos limitados (equipo reducido)  
-- Dependencia de LLM externos  
-- Necesidad de priorizar MVP frente a solución completa  
+## ✅ Semana 12 – Cierre
+- MVP
+- Documentación
+- Demo
 
 ---
 
-## 10. Seguimiento
+# 🚀 Resultado Esperado
 
-- Revisión semanal de avances  
-- Validación por hito de cada fase  
-- Ajuste incremental de alcance si es necesario  
+- ✅ Sistema multi‑agente funcional  
+- ✅ Kafka operativo  
+- ✅ Análisis de código automatizado  
+- ✅ Arquitectura escalable  
+
+# 🗺️ Plan de Proyecto (3 meses)
+## Sistema Multi‑Agente + Arquitectura Event‑Driven
+
+---
+
+## 📌 1. Visión General
+
+Este proyecto integra dos grandes bloques:
+
+- ✅ Sistema de análisis de código basado en arquitectura multi‑agente y multi‑LLM  
+- ✅ Sistema de desacople basado en eventos con Apache Kafka (Event‑Driven + CQRS)
+
+El objetivo es construir un sistema escalable, desacoplado y capaz de analizar software complejo de forma automatizada.
 
 ---
 
-## 11. Criterios de Éxito
+## 🧭 2. Estrategia del Plan
 
-El proyecto se considerará exitoso si:
+El desarrollo se divide en **3 fases principales**:
 
-- El sistema responde preguntas sobre código correctamente  
-- Puede generar documentación técnica útil  
-- Puede proponer mejoras razonables  
-- Funciona con múltiples modelos de forma coordinada  
-- Se dispone de un flujo multi‑agente funcionando end‑to‑end  
+| Fase | Duración | Objetivo |
+|------|--------|---------|
+| Fase 1 | Semanas 1–4 | Fundaciones técnicas |
+| Fase 2 | Semanas 5–8 | Desarrollo del core |
+| Fase 3 | Semanas 9–12 | Integración y estabilización |
 
 ---
+
+# 🚧 FASE 1: Fundaciones (Semanas 1–4)
+
+## 🎯 Objetivo
+Establecer la infraestructura base y primeros componentes funcionales.
+
+---
+
+## ✅ Semana 1 – Diseño de arquitectura
+
+### Entregables
+- Arquitectura técnica detallada
+- Diagramas de componentes
+- Catálogo inicial de eventos
+
+### Tareas
+- Definir microservicios
+- Definir contratos de eventos
+- Selección tecnológica
+
+---
+
+## ✅ Semana 2 – Infraestructura
+
+### Entregables
+- Kafka desplegado
+- Repositorios iniciales
+- CI/CD básico
+
+### Tareas
+- Deploy Kafka
+- Crear topics
+- Setup Docker
+- Configurar LLMs
+
+---
+
+## ✅ Semana 3 – Ingesta y análisis v1
+
+### Entregables
+- Analizador funcional
+
+### Tareas
+- Lectura de repos
+- Parser
+- Explicación de código
+- Indexación
+
+---
+
+## ✅ Semana 4 – Kafka + flujo inicial
+
+### Entregables
+- Flujo end-to-end
+
+### Tareas
+- Implementar wrapper
+- Crear consumer
+- Validar pipeline
+
+---
+
+# ⚙️ FASE 2: Desarrollo Core (Semanas 5–8)
+
+## ✅ Semana 5 – Multi‑agente v1
+- Agente analista
+- Agente arquitecto
+- Orquestador
+
+## ✅ Semana 6 – Verificación
+- Agente verificador
+- Validación cruzada
+
+## ✅ Semana 7 – Kafka avanzado
+- Retries
+- DLQ
+- Idempotencia
+
+## ✅ Semana 8 – Optimización + Memoria
+- Optimization Service
+- Memory Service
+- Embeddings
+
+---
+
+# 🔗 FASE 3: Integración y Validación (Semanas 9–12)
+
+## ✅ Semana 9 – Integración total
+- Integración completa
+
+## ✅ Semana 10 – Casos de uso
+- Análisis
+- Q&A
+- Documentación
+
+## ✅ Semana 11 – Testing
+- Pruebas
+- Observabilidad
+
+## ✅ Semana 12 – Cierre
+- MVP
+- Documentación
+- Demo
+
+---
+
+# 🚀 Resultado Esperado
+
+- ✅ Sistema multi‑agente funcional  
+- ✅ Kafka operativo  
+- ✅ Análisis de código automatizado  
+- ✅ Arquitectura escalable  
+
