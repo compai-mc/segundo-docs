@@ -1,280 +1,183 @@
-# 🗺️ Plan de Proyecto (3 meses)
-## Sistema Multi‑Agente + Arquitectura Event‑Driven
+# 🗺️ Plan Unificado de Proyecto (3 meses)
+## Sistema Multi‑Agente + Arquitectura Event‑Driven (Kafka)
 
 ---
 
-## 📌 1. Visión General
+## 📌 1. Objetivo General
 
-Este proyecto integra dos grandes bloques:
-
-- ✅ Sistema de análisis de código basado en arquitectura multi‑agente y multi‑LLM  
-- ✅ Sistema de desacople basado en eventos con Apache Kafka (Event‑Driven + CQRS)
-
-El objetivo es construir un sistema escalable, desacoplado y capaz de analizar software complejo de forma automatizada.
+Construir en 3 meses un sistema que:
+- Analice código automáticamente usando arquitectura multi‑agente y multi‑LLM
+- Desacople un sistema legacy mediante un modelo event-driven basado en Kafka
+- Permita evolución progresiva hacia una arquitectura escalable y modular
 
 ---
 
-## 🧭 2. Estrategia del Plan
+## 🧭 2. Estrategia
 
-El desarrollo se divide en **3 fases principales**:
+El plan integra ambos sistemas y se divide en 3 fases:
 
-| Fase | Duración | Objetivo |
+| Fase | Semanas | Objetivo |
 |------|--------|---------|
-| Fase 1 | Semanas 1–4 | Fundaciones técnicas |
-| Fase 2 | Semanas 5–8 | Desarrollo del core |
-| Fase 3 | Semanas 9–12 | Integración y estabilización |
+| Fase 1 | 1–4 | Base técnica + Kafka + análisis inicial |
+| Fase 2 | 5–8 | Multi‑agente + sistema event-driven completo |
+| Fase 3 | 9–12 | Integración total + casos reales |
 
 ---
 
 # 🚧 FASE 1: Fundaciones (Semanas 1–4)
 
 ## 🎯 Objetivo
-Establecer la infraestructura base y primeros componentes funcionales.
+Levantar la base común de ambos sistemas (IA + Kafka)
 
 ---
 
-## ✅ Semana 1 – Diseño de arquitectura
-
-### Entregables
-- Arquitectura técnica detallada
-- Diagramas de componentes
-- Catálogo inicial de eventos
-
-### Tareas
-- Definir microservicios
-- Definir contratos de eventos
-- Selección tecnológica
+## ✅ Semana 1 – Diseño global
+- Arquitectura completa (multi‑agente + event-driven)
+- Definición de eventos (catálogo)
+- Diseño de microservicios y contratos
 
 ---
 
 ## ✅ Semana 2 – Infraestructura
-
-### Entregables
-- Kafka desplegado
-- Repositorios iniciales
-- CI/CD básico
-
-### Tareas
-- Deploy Kafka
-- Crear topics
-- Setup Docker
-- Configurar LLMs
+- Deploy Kafka + topics
+- Setup repositorios y CI/CD
+- Configuración entorno LLM
 
 ---
 
-## ✅ Semana 3 – Ingesta y análisis v1
-
-### Entregables
-- Analizador funcional
-
-### Tareas
-- Lectura de repos
-- Parser
-- Explicación de código
-- Indexación
+## ✅ Semana 3 – Análisis de código (v1)
+- Parser de repositorios
+- Agente Analista básico
+- Indexación inicial (Memory Service)
 
 ---
 
-## ✅ Semana 4 – Kafka + flujo inicial
+## ✅ Semana 4 – Wrapper + Kafka
+- Implementar Gateway de interceptación del legacy
+- Publicación de eventos en Kafka
+- Primer consumer de análisis
 
-### Entregables
-- Flujo end-to-end
-
-### Tareas
-- Implementar wrapper
-- Crear consumer
-- Validar pipeline
+Pipeline:
+Legacy → Wrapper → Kafka → Analizador
 
 ---
 
 # ⚙️ FASE 2: Desarrollo Core (Semanas 5–8)
-
-## ✅ Semana 5 – Multi‑agente v1
-- Agente analista
-- Agente arquitecto
-- Orquestador
-
-## ✅ Semana 6 – Verificación
-- Agente verificador
-- Validación cruzada
-
-## ✅ Semana 7 – Kafka avanzado
-- Retries
-- DLQ
-- Idempotencia
-
-## ✅ Semana 8 – Optimización + Memoria
-- Optimization Service
-- Memory Service
-- Embeddings
-
----
-
-# 🔗 FASE 3: Integración y Validación (Semanas 9–12)
-
-## ✅ Semana 9 – Integración total
-- Integración completa
-
-## ✅ Semana 10 – Casos de uso
-- Análisis
-- Q&A
-- Documentación
-
-## ✅ Semana 11 – Testing
-- Pruebas
-- Observabilidad
-
-## ✅ Semana 12 – Cierre
-- MVP
-- Documentación
-- Demo
-
----
-
-# 🚀 Resultado Esperado
-
-- ✅ Sistema multi‑agente funcional  
-- ✅ Kafka operativo  
-- ✅ Análisis de código automatizado  
-- ✅ Arquitectura escalable  
-
-# 🗺️ Plan de Proyecto (3 meses)
-## Sistema Multi‑Agente + Arquitectura Event‑Driven
-
----
-
-## 📌 1. Visión General
-
-Este proyecto integra dos grandes bloques:
-
-- ✅ Sistema de análisis de código basado en arquitectura multi‑agente y multi‑LLM  
-- ✅ Sistema de desacople basado en eventos con Apache Kafka (Event‑Driven + CQRS)
-
-El objetivo es construir un sistema escalable, desacoplado y capaz de analizar software complejo de forma automatizada.
-
----
-
-## 🧭 2. Estrategia del Plan
-
-El desarrollo se divide en **3 fases principales**:
-
-| Fase | Duración | Objetivo |
-|------|--------|---------|
-| Fase 1 | Semanas 1–4 | Fundaciones técnicas |
-| Fase 2 | Semanas 5–8 | Desarrollo del core |
-| Fase 3 | Semanas 9–12 | Integración y estabilización |
-
----
-
-# 🚧 FASE 1: Fundaciones (Semanas 1–4)
 
 ## 🎯 Objetivo
-Establecer la infraestructura base y primeros componentes funcionales.
+Desarrollar capacidades completas de IA y desacoplo
 
 ---
 
-## ✅ Semana 1 – Diseño de arquitectura
-
-### Entregables
-- Arquitectura técnica detallada
-- Diagramas de componentes
-- Catálogo inicial de eventos
-
-### Tareas
-- Definir microservicios
-- Definir contratos de eventos
-- Selección tecnológica
-
----
-
-## ✅ Semana 2 – Infraestructura
-
-### Entregables
-- Kafka desplegado
-- Repositorios iniciales
-- CI/CD básico
-
-### Tareas
-- Deploy Kafka
-- Crear topics
-- Setup Docker
-- Configurar LLMs
-
----
-
-## ✅ Semana 3 – Ingesta y análisis v1
-
-### Entregables
-- Analizador funcional
-
-### Tareas
-- Lectura de repos
-- Parser
-- Explicación de código
-- Indexación
-
----
-
-## ✅ Semana 4 – Kafka + flujo inicial
-
-### Entregables
-- Flujo end-to-end
-
-### Tareas
-- Implementar wrapper
-- Crear consumer
-- Validar pipeline
-
----
-
-# ⚙️ FASE 2: Desarrollo Core (Semanas 5–8)
-
-## ✅ Semana 5 – Multi‑agente v1
-- Agente analista
-- Agente arquitecto
+## ✅ Semana 5 – Sistema multi‑agente
+- Agente Analista
+- Agente Arquitecto
 - Orquestador
+- Integración multi‑LLM
+
+---
 
 ## ✅ Semana 6 – Verificación
-- Agente verificador
-- Validación cruzada
+- Agente Verificador
+- Validación de resultados
+- Mejora de calidad del análisis
 
-## ✅ Semana 7 – Kafka avanzado
-- Retries
-- DLQ
-- Idempotencia
+---
 
-## ✅ Semana 8 – Optimización + Memoria
+## ✅ Semana 7 – Event-driven avanzado
+- Implementación robusta Kafka:
+  - retries
+  - DLQ
+  - idempotencia
+- Consumers desacoplados por dominio
+
+---
+
+## ✅ Semana 8 – Optimización + memoria
 - Optimization Service
-- Memory Service
-- Embeddings
+- Memory Service (embeddings + búsqueda)
+- Context enrichment para agentes
 
 ---
 
 # 🔗 FASE 3: Integración y Validación (Semanas 9–12)
 
+## 🎯 Objetivo
+Unificar ambos sistemas en un flujo completo funcional
+
+---
+
 ## ✅ Semana 9 – Integración total
-- Integración completa
+Pipeline completo:
+Usuario → Orquestador → Kafka → Agentes → Consumers
 
-## ✅ Semana 10 – Casos de uso
-- Análisis
-- Q&A
-- Documentación
+---
 
-## ✅ Semana 11 – Testing
-- Pruebas
-- Observabilidad
+## ✅ Semana 10 – Casos de uso reales
+- Análisis de repositorios
+- Generación de documentación
+- Q&A sobre código
+- Optimización arquitectónica
+
+---
+
+## ✅ Semana 11 – Testing y robustez
+- Testing de carga (Kafka)
+- Manejo de errores (timeouts, fallback)
+- Observabilidad (logs, tracing)
+
+---
 
 ## ✅ Semana 12 – Cierre
-- MVP
-- Documentación
-- Demo
+- MVP completo
+- Documentación técnica
+- Demo funcional
+
+---
+
+# 🧠 Arquitectura Final
+
+```
+Usuario / Legacy System
+         │
+         ▼
+     Wrapper / Gateway
+         │
+         ▼
+        Kafka
+         │
+ ┌───────┼────────┬────────┐
+ ▼       ▼        ▼        ▼
+Analista Arquitecto Verificador Consumers
+   │         │        │        │
+   └──────┬──┴──┬─────┘        │
+          ▼     ▼              ▼
+     Memory   Optimization   BD / Servicios
+```
+
+---
+
+# ⚠️ Riesgos
+- Dependencia de LLMs
+- Coste computacional
+- Complejidad de sistemas async
+- Consistencia eventual
 
 ---
 
 # 🚀 Resultado Esperado
 
-- ✅ Sistema multi‑agente funcional  
-- ✅ Kafka operativo  
-- ✅ Análisis de código automatizado  
-- ✅ Arquitectura escalable  
+En 3 meses:
+- ✅ Sistema multi‑agente operativo
+- ✅ Kafka como bus de eventos central
+- ✅ Desacople parcial del sistema legacy
+- ✅ Análisis automático de código
+- ✅ Arquitectura escalable basada en eventos
+
+---
+
+# 📌 Siguientes pasos
+- Definir backlog detallado
+- Asignar equipo
+- Iniciar Fase 1
 
