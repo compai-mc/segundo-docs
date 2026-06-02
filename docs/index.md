@@ -1,5 +1,11 @@
 # 📄 Documentación del Proyecto
 
+
+## Carpeta base
+
+https://compai-mc.github.io/segundo-docs/
+
+
 ## Documentos disponibles
 
 - [Documento de Alcance Bloque I](alcance_bloque_1.md)
