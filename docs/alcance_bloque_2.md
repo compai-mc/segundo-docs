@@ -137,22 +137,22 @@ Fuera del MVP:
 
 ## 5. Arquitectura de Servicios
 
-#### ✅ Wrapper / Gateway
+#### Wrapper / Gateway
 - Intercepta llamadas del sistema legacy  
 - Traduce operaciones a eventos Kafka  
 - Actúa como punto de entrada  
 
-#### ✅ Kafka (Event Bus)
+#### Kafka (Event Bus)
 - Canal central de comunicación  
 - Gestión de topics  
 - Garantías de entrega  
 
-#### ✅ Consumers
+#### Consumers
 - Procesan eventos  
 - Ejecutan lógica de negocio  
 - Acceden a bases de datos  
 
-#### ✅ Servicios desacoplados
+#### Servicios desacoplados
 - Se implementa un tópico por cada servicio origen 
 - Independientes entre sí  
 
