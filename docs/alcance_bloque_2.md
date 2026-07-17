@@ -1,32 +1,36 @@
-# 📄 Documento de Alcance del Proyecto  
-## Sistema de Desacople basado en Arquitectura Event-Driven y CQRS
+# 📄 Documento de Alcance del Proyecto
+## Metodología de Desacople Progresivo basada en Arquitectura Event-Driven y CQRS
 
 ---
 
 ## 1. Propósito
-El presente documento define el alcance del segundo bloque del proyecto, centrada en la transformación de un sistema legacy altamente acoplado hacia una arquitectura desacoplada basada en eventos utilizando un event bus.
+
+El presente documento define el alcance funcional y técnico del proyecto, estableciendo la estrategia de evolución de un sistema **legacy** altamente acoplado hacia una arquitectura desacoplada basada en eventos, manteniendo la compatibilidad con el sistema existente durante todo el proceso de transición.
 
 ---
 
 ## 2. Descripción del Proyecto
-El proyecto consiste en la definición de la **arquitectura** para la una capa de desacople que permita redirigir las llamadas directas entre componentes hacia un modelo basado en mensajería asíncrona.
 
-El proyecto se ilustrará con un piloto real (MVP). En el MVP NO cambiará el mapeo actual de las funciones (harán lo mismo que actualmente pero de manera desacoplada)
+El proyecto consiste en la definición de una **Arquitectura de Desacople por Eventos (ADE)**, una metodología para la evolución progresiva de sistemas legacy hacia arquitecturas distribuidas basadas en eventos.
 
-El objetivo es eliminar dependencias punto a punto en el código y en el acceso a bases de datos, introduciendo un bus de eventos como mecanismo único de comunicación entre componentes.
+ADE define un patrón arquitectónico que sustituye las dependencias directas entre componentes por un modelo de comunicación desacoplado basado en eventos. Mediante este patrón, las llamadas síncronas existentes son encapsuladas, transformadas en eventos y distribuidas a través de un **Event Bus**, permitiendo desacoplar progresivamente la lógica de negocio sin necesidad de reescribir el sistema existente.
+
+En esta primera implementación, la arquitectura utilizará **Apache Kafka** como Event Bus y mantendrá el comportamiento funcional actual del sistema. El MVP no modificará la lógica de negocio ni el mapeo de las operaciones existentes; únicamente sustituirá el mecanismo de comunicación entre componentes.
+
+> ### Principio fundamental de ADE
+>
+> Ningún componente conocerá directamente a otro componente del sistema. Toda comunicación deberá realizarse mediante eventos publicados en el Event Bus.
 
 ---
 
-## 3. Objetivos del Sistema
+## 3. Objetivos
 
-El sistema deberá ser capaz de:
-
-- Eliminar llamadas directas entre módulos o servicios  
-- Interceptar peticiones y transformarlas en eventos  
-- Utilizar Apache Kafka como canal central de comunicación  
-- Ejecutar lógica mediante consumidores desacoplados  
-- Desacoplar el acceso a bases de datos de la lógica de negocio  
-- Facilitar la evolución del sistema sin dependencias rígidas  
+- Eliminar llamadas directas entre módulos o servicios.
+- Interceptar peticiones y transformarlas en eventos.
+- Utilizar Apache Kafka como canal central de comunicación.
+- Ejecutar lógica mediante consumidores desacoplados.
+- Desacoplar el acceso a bases de datos de la lógica de negocio.
+- Facilitar la evolución progresiva del sistema.
 
 ---
 
@@ -34,41 +38,86 @@ El sistema deberá ser capaz de:
 
 ### 4.1 Capacidades principales
 
-El sistema incluirá:
+- Interceptación de llamadas existentes.
+- Transformación de operaciones en eventos.
+- Publicación de eventos en Kafka.
+- Consumo mediante servicios independientes.
+- Ejecución de lógica en consumidores.
+- Generación opcional de eventos derivados.
 
-- Interceptación de llamadas existentes  
-- Transformación de operaciones en eventos estructurados  
-- Publicación de eventos en Kafka  
-- Consumo de eventos mediante servicios independientes  
-- Ejecución de lógica en consumidores  
-- Generación opcional de eventos derivados  
+### 4.2 Alcance del MVP
 
----
+El MVP validará la arquitectura ADE sobre un subconjunto representativo del sistema legacy.
 
-### 4.2 Modelo de comunicación
+Incluye:
 
-#### Modelo actual (AS-IS)
-- Llamadas síncronas entre módulos  
-- Acceso directo a bases de datos  
-- Dependencias rígidas  
+- Interceptación de llamadas existentes.
+- Transformación de llamadas en eventos.
+- Publicación en Apache Kafka.
+- Procesamiento mediante consumidores desacoplados.
+- Respuesta funcional equivalente al sistema actual.
 
-#### Modelo objetivo (TO-BE)
-- Comunicación mediante eventos  
-- Desacoplo entre emisores y consumidores  
-- Procesamiento asíncrono  (pero respuesta síncrona)
+El MVP no modificará la lógica de negocio existente, limitándose a validar el nuevo patrón de comunicación.
 
----
+### 4.3 Arquitectura funcional
 
-### 4.3 Tipos de eventos
+#### Principios de la arquitectura ADE
 
-El MVP gestionará:
+- Eliminación del acoplamiento punto a punto.
+- Comunicación exclusivamente mediante eventos.
+- Evolución progresiva sin reescritura.
+- Separación entre productores y consumidores.
+- Independencia tecnológica entre componentes.
+- Compatibilidad con el sistema legacy durante la transición.
 
-- Eventos de comando (acciones solicitadas)
+#### Componentes
 
-El MVP no proporcionará:
+##### Wrapper / Gateway
 
-- Eventos de estado (mensajes de auditoria y control)
-- Eventos derivados (eventos a otros sistemas)
+- Intercepta llamadas del sistema legacy.
+- Traduce operaciones a eventos.
+- Punto único de entrada.
+
+##### Event Bus (Apache Kafka)
+
+- Canal central de comunicación.
+- Gestión de tópicos.
+- Garantías de entrega.
+
+##### Consumidores
+
+- Procesan eventos.
+- Ejecutan la lógica de negocio.
+- Acceden a los recursos necesarios.
+
+##### Servicios desacoplados
+
+- Un tópico por servicio origen.
+- Independientes entre sí.
+
+### 4.4 Modelo de comunicación
+
+#### AS-IS
+
+- Llamadas síncronas.
+- Acceso directo a bases de datos.
+- Dependencias rígidas.
+
+#### TO-BE
+
+- Comunicación mediante eventos.
+- Desacoplamiento entre productores y consumidores.
+- Procesamiento interno asíncrono con respuesta funcional equivalente.
+
+### 4.5 Tipos de eventos
+
+El MVP gestionará eventos de comando.
+
+Fuera del MVP:
+
+- Eventos de estado.
+- Eventos derivados.
+- Integraciones con otros sistemas.
 
 
 #### Ejemplo de evento
@@ -86,7 +135,7 @@ El MVP no proporcionará:
 
 ---
 
-### 4.4 Componentes del sistema
+## 5. Arquitectura de Servicios
 
 #### ✅ Wrapper / Gateway
 - Intercepta llamadas del sistema legacy  
@@ -107,62 +156,49 @@ El MVP no proporcionará:
 - Se implementa un tópico por cada servicio origen 
 - Independientes entre sí  
 
----
 
 ## 5. Arquitectura de Alto Nivel
 
 El flujo general será:
 
-```
-Sistema Original → Wrapper → Kafka → Consumidores → Sistemas destino
-```
+    Sistema Original → Wrapper → Kafka → Consumidores → Sistemas destino
 
 ---
 
 ## 6. Fuera de alcance
 
-Queda fuera del proyecto:
-
-- Reescritura completa del sistema legacy  
-- Sustitución total de la lógica existente  
-- Desarrollo de interfaces de usuario  
-- Migración completa de bases de datos  
-- Consistencia fuerte en todos los casos  
-- Eliminación total del sistema legacy en esta fase  
+- Reescritura completa del sistema legacy.
+- Sustitución de la lógica existente.
+- Desarrollo de interfaces de usuario.
+- Migración completa de bases de datos.
+- El MVP no garantiza consistencia fuerte entre todos los componentes distribuidos.
+- Eliminación definitiva del sistema legacy.
 
 ---
 
 ## 7. Supuestos
 
-Se asume que:
-
-- El sistema legacy permite interceptar llamadas  
-- Se dispone de infraestructura Kafka  
-- El sistema puede evolucionar de forma progresiva  
-- Los consumidores pueden adaptarse al modelo asíncrono  
+- El sistema permite interceptar llamadas.
+- Existe infraestructura Kafka.
+- La migración será progresiva.
+- Los consumidores podrán adaptarse al nuevo modelo.
 
 ---
 
 ## 8. Riesgos
 
-- Compatibilidad con el sistema actual  
-- Introducción progresiva del modelo  
-- Complejidad de sistemas asíncronos  
-- Incremento de latencia frente a llamadas síncronas  
+- Compatibilidad con el sistema existente.
+- Complejidad de la transición.
+- Gestión de la asincronía.
+- Incremento de latencia.
 
 ---
 
-## 9. Consideraciones técnicas
+## 9. Consideraciones técnicas (posteriores al MVP)
 
-El sistema deberá contemplar (no en el MVP):
-
-- Idempotencia en consumidores  
-- Reintentos automáticos  
-- Dead Letter Queues (DLQ)  
-- Versionado de eventos  
-- Observabilidad y trazabilidad  
-- Gestión de contratos de eventos  
-
----
-
-
+- Idempotencia.
+- Reintentos automáticos.
+- Dead Letter Queue (DLQ).
+- Versionado de eventos.
+- Observabilidad y trazabilidad.
+- Gestión de contratos de eventos.

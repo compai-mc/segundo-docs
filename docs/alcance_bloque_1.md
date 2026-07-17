@@ -1,166 +1,207 @@
-# 📄 Documento de Alcance del Proyecto
+# 📄 Documento de Alcance del Bloque I
 
 ## 1. Propósito
-El presente documento define el alcance del proyecto, estableciendo de forma clara las funcionalidades incluidas, los límites del sistema y las capacidades esperadas del mismo.
 
----
+Este documento define el alcance funcional y técnico del proyecto,
+estableciendo las capacidades incluidas, los límites del sistema y los
+objetivos que se pretenden alcanzar durante el desarrollo del MVP.
+
+------------------------------------------------------------------------
+
+
 
 ## 2. Descripción del Proyecto
-El proyecto consiste en el desarrollo de un sistema de análisis de código basado en una arquitectura multi‑agente y multi‑LLM, capaz de comprender sistemas software complejos y proporcionar análisis técnico avanzado.
 
-El sistema se diseña para operar sobre repositorios de código, permitiendo la interpretación, documentación, análisis y mejora de software de manera automatizada.
+El proyecto consiste en el desarrollo de un sistema inteligente de análisis de código basado en **Razonamiento Deliberativo Crítico (RDC)**, una metodología para la construcción de sistemas de razonamiento distribuidos capaz de comprender sistemas software complejos y proporcionar análisis técnico avanzado.
 
----
+Razonamiento Deliberativo Crítico (RDC) es una metodología para la construcción de sistemas de razonamiento distribuido que se materializa mediante un patrón arquitectónico basado en la generación, deliberación y verificación de hipótesis independientes. En dicho patrón, múltiples componentes de razonamiento generan hipótesis sobre un mismo problema, que posteriormente son sometidas a un proceso de deliberación, contraste y verificación crítica antes de obtener una conclusión fundamentada. En esta primera implementación, dichos componentes de razonamiento estarán constituidos por múltiples modelos de lenguaje (arquitectura multi-LLM), aunque la metodología RDC es independiente de la tecnología utilizada y permite incorporar otros mecanismos de razonamiento o verificación.
 
-## 3. Objetivos del Sistema
+> ### Principio fundamental de RDC
+>
+> Toda conclusión generada por el sistema deberá ser el resultado de un proceso de **Razonamiento Deliberativo Crítico (RDC)**. Ninguna respuesta será producida a partir de una única hipótesis; todas las conclusiones deberán obtenerse mediante un proceso de deliberación, contraste y verificación entre múltiples hipótesis independientes.
+
+El sistema está orientado al análisis de repositorios de código fuente, permitiendo interpretar, documentar, analizar y proponer mejoras arquitectónicas de forma automatizada.
+
+
+
+
+------------------------------------------------------------------------
+
+## 3. Objetivos
+
 El sistema deberá ser capaz de:
 
-1. Comprender código en múltiples lenguajes de programación  
-2. Analizar tanto módulos aislados como sistemas completos  
-3. Responder preguntas técnicas sobre el código  
-4. Generar documentación e informes técnicos  
-5. Proponer optimizaciones y mejoras arquitectónicas  
-6. Contrastar resultados utilizando múltiples modelos de lenguaje (LLMs)
+-   Comprender código en múltiples lenguajes (según el alcance del MVP).
+-   Analizar módulos individuales y sistemas completos.
+-   Responder preguntas técnicas sobre el código.
+-   Generar documentación técnica automáticamente.
+-   Detectar problemas, riesgos y antipatrones.
+-   Proponer optimizaciones y mejoras arquitectónicas.
+-   Contrastar resultados mediante múltiples LLM especializados.
 
----
+------------------------------------------------------------------------
 
 ## 4. Alcance Funcional
 
 ### 4.1 Capacidades principales
 
-El sistema incluirá las siguientes capacidades:
+-   Análisis sintáctico y semántico.
+-   Comprensión de dependencias.
+-   Generación automática de documentación.
+-   Evaluación de calidad del código.
+-   Detección de errores y antipatrones.
+-   Generación de propuestas de optimización.
+-   Consultas técnicas sobre el sistema.
 
-- Análisis sintáctico y semántico de código fuente  
-- Comprensión de dependencias y relaciones entre módulos  
-- Generación automática de documentación técnica  
-- Evaluación de calidad del código (detección de problemas y anti‑patrones)  
-- Generación de propuestas de optimización  
-- Respuesta a preguntas técnicas sobre el sistema  
+### 4.2 Alcance del MVP
 
----
+La primera versión del sistema (MVP) estará orientada a validar la metodología RDC sobre una parte representativa del ecosistema software de la organización.
 
-### 4.2 Arquitectura del sistema
+El alcance del MVP comprenderá:
 
-El sistema se construirá bajo un enfoque de **arquitectura distribuida multi‑agente**, donde cada agente tendrá una responsabilidad específica.
+- El análisis de aplicaciones desarrolladas en **.NET**.
+- El análisis de código **PL/SQL** asociado a dichas aplicaciones.
+- La construcción de los procesos de descubrimiento, indexación, análisis, síntesis y optimización definidos por la metodología RDC para este ámbito tecnológico.
+- La validación de la arquitectura sobre repositorios reales de la organización.
 
-#### Agentes incluidos:
+El MVP tendrá como objetivo demostrar la viabilidad técnica de la metodología RDC y servir como base para una futura extensión del sistema a otros lenguajes, tecnologías y dominios funcionales.
 
-- **Agente Analista de Código**
-  - Comprensión de funciones y módulos
-  - Análisis de dependencias
-  - Detección de errores y problemas
 
-- **Agente Arquitecto**
-  - Análisis del sistema global
-  - Identificación de patrones y anti‑patrones
-  - Propuesta de rediseños
+### 4.3 Arquitectura funcional
 
-- **Agente Verificador**
-  - Validación de resultados
-  - Detección de inconsistencias
-  - Revisión crítica de conclusiones
+#### Principios de la arquitectura RDC
 
-- **Agente Supervisor (Orquestador)**
-  - Coordinación de agentes
-  - Gestión del flujo de ejecución
-  - Síntesis de respuestas finales
+La arquitectura RDC se fundamenta en los siguientes principios:
 
----
+- Ninguna conclusión se obtiene a partir de una única hipótesis.
+- Todo resultado debe ser sometido a deliberación crítica.
+- Cada módulo aplica RDC de forma especializada según su responsabilidad.
+- La verificación forma parte del proceso de razonamiento y no constituye una fase posterior.
+- Toda conclusión debe ser trazable hasta las hipótesis y evidencias que la sustentan.
 
-### 4.3 Modelo multi‑LLM
 
-El sistema utilizará múltiples modelos de lenguaje especializados, incluyendo:
 
-- Modelos orientados a análisis de código (ej. Qwen)
-- Modelos orientados a razonamiento global (ej. Gemma)
-- Modelos orientados a verificación o validación
+El sistema estará organizado en cinco módulos deliberativos principales (RDC):
 
-Cada modelo será utilizado en función de su especialización, evitando un enfoque monolítico.
+#### RDC Descubrimiento
 
----
+-   Parseo específico por lenguaje.
+-   Comprensión de funciones y módulos.
+-   Resúmenes multinivel del código.
+-   Análisis de dependencias (grafo).
+-   Detección de errores.
 
-### 4.4 Casos de uso principales
+#### RDC Indexación
 
-El sistema cubrirá los siguientes escenarios:
+-   Integración de la información del sistema.
+-   Grafo de dependencias (base de datos de grafos).
+-   Índice semántico (base de datos vectorial).
+-   Índice estructural (base de datos multimodelo/documental).
+-   API de indexación.
+-   API de búsqueda semántica.
 
-#### ✅ Análisis de código
-- Explicación de funciones y módulos  
-- Identificación de dependencias  
+#### RDC Análisis
 
-#### ✅ Documentación automática
-- Generación de documentación técnica  
-- Creación de resúmenes de módulos  
+-   Clasificación de consultas.
+-   Análisis estructural y semántico.
+-   Recuperación contextual.
+-   Deliberación multi‑LLM.
+-   Verificación crítica.
+-   Validación de resultados.
 
-#### ✅ Consultas técnicas (Q&A)
-- Respuesta a preguntas sobre el sistema  
-- Navegación conceptual del código  
+#### RDC Síntesis
 
-#### ✅ Optimización
-- Propuesta de mejoras de rendimiento  
-- Sugerencia de patrones arquitectónicos  
 
-#### ✅ Detección de problemas
-- Identificación de bugs potenciales  
-- Detección de anti‑patrones y code smells  
+Este módulo transforma los resultados generados por RDC Análisis en conocimiento de alto nivel mediante la ejecución de procesos de Razonamiento Deliberativo Crítico orientados a diferentes criterios de análisis.
 
----
+Cada criterio constituye una perspectiva independiente desde la que se analiza el sistema y puede ser configurado o ampliado sin modificar la arquitectura RDC.
 
-## 5. Arquitectura de Servicios (Alto nivel)
+##### Criterios de análisis 
 
-El sistema se compondrá de los siguientes microservicios:
+- Arquitectura global
+- Componentes y responsabilidades
+- Dependencias entre módulos
+- Flujos de ejecución
+- Riesgos de arquitectura
+- Antipatrones
+- Hotspots (zonas críticas del sistema)
+- Otros criterios configurables
 
-- **Orquestador**
-  - Controla el flujo de ejecución
-  - Coordina la interacción entre agentes
+##### Funcionalidades
 
-- **Analizador**
-  - Análisis de código
-  - Documentación
-  - Detección de problemas
+- Gestión de un catálogo de criterios de análisis editable.
+- Ejecución independiente de un proceso RDC para cada criterio.
+- Correlación de los resultados obtenidos.
+- Eliminación de inconsistencias y duplicidades.
+- Generación de una visión unificada del sistema.
+- Construcción del informe final de análisis.
 
-- **Optimizador**
-  - Generación de mejoras y rediseños
+#### RDC Optimización
 
-- **Sistema de memoria**
-  - Almacenamiento vectorial
-  - Indexación y búsqueda semántica
-  - Gestión de metadatos del repositorio
+-   Deliberación (RDC) sobre mejoras.
+-   Propuestas arquitectónicas.
+-   Persistencia de resultados en almacenamiento S3.
 
----
+### 4.4 Modelo de razonamiento
 
-## 6. Límites del Proyecto (Fuera de alcance)
+El sistema podrá utilizar diferentes familias de modelos (GPT, Claude,
+Gemini, Llama, etc.).
 
-Quedan fuera del alcance:
 
-- Desarrollo de interfaces de usuario avanzadas
-- Integración con sistemas empresariales externos no definidos
-- Ejecución directa de código en entornos productivos
-- Automatización completa de despliegues
-- Sustitución total de revisión humana en procesos críticos
-- Garantía de ausencia total de errores en el análisis generado por LLMs
+Cada modelo participante ejecutará un proceso de RDC desde una perspectiva especializada. Las hipótesis generadas serán sometidas a un proceso de deliberación y verificación crítica que permitirá detectar inconsistencias, reforzar evidencias y construir una respuesta consensuada.
 
----
+### 4.5 Casos de uso
+
+-   Análisis de código.
+-   Documentación automática.
+-   Consultas técnicas.
+-   Detección de riesgos y antipatrones.
+-   Optimización arquitectónica.
+
+------------------------------------------------------------------------
+
+## 5. Arquitectura de Servicios
+
+-   **Módulo Orquestador**
+-   **Módulo RDC de Descubrimiento**
+-   **Módulo RDC de Indexación**
+-   **Módulo RDC de Análisis**
+-   **Módulo RDC de Síntesis**
+-   **Módulo RDC de Optimización**
+
+### Persistencia (preferible)
+
+-   Base de datos documental (ArangoDB).
+-   Base de datos grafos (ArangoDB).
+-   Base de datos vectorial (Milvus).
+-   Almacenamiento de objetos (MinIO / S3).
+
+------------------------------------------------------------------------
+
+## 6. Fuera de alcance
+
+-   Interfaces de usuario avanzadas.
+-   Integraciones no definidas.
+-   Ejecución automática en producción.
+-   Automatización completa de despliegues.
+-   Sustitución de la revisión humana.
+-   Garantía absoluta de ausencia de errores.
+-   Lenguajes no contemplados en el MVP.
+
+------------------------------------------------------------------------
 
 ## 7. Supuestos
 
-El proyecto asume que:
+-   El código fuente estará disponible.
+-   Existirá acceso a los modelos de lenguaje.
+-   Infraestructura Linux para la ejecución.
+-   Recursos suficientes para bases de datos y almacenamiento.
 
-- El código fuente estará disponible para su análisis
-- Los modelos de lenguaje utilizados serán accesibles. Estas dos parejas serían correctas:
-  - Claude 3, GPT-4o
-  - Llama 3 (Meta) + Gemini 1.5 Pro (Google)
-- Se dispone de infraestructura suficiente para ejecutar los servicios
-  - linux
-
----
+------------------------------------------------------------------------
 
 ## 8. Restricciones
 
-- Dependencia de modelos de lenguaje externos
-- Coste computacional asociado al uso de múltiples LLMs
-- Variabilidad en la calidad de las respuestas generadas
-- Necesidad de validación adicional en casos críticos
-
----
-
-
+-   Dependencia de proveedores de LLM.
+-   Coste computacional del razonamiento multi‑LLM.
+-   Variabilidad inherente a los modelos.
+-   Necesidad de validación humana en escenarios críticos.
