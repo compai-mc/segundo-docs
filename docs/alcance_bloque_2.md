@@ -1,4 +1,4 @@
-# 📄 Documento de Alcance del Proyecto
+# 📄 Documento de Alcance del Bloque II
 ## Metodología de Desacople Progresivo basada en Arquitectura Event-Driven y CQRS
 
 ---
